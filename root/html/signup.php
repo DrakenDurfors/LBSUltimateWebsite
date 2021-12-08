@@ -1,7 +1,9 @@
 <?php
-// Include files
+//Signup page
+//Include files
 require_once "includes/connectToDB.inc.php";
 require_once "includes/functions.inc.php";
+require_once "includes/errorHandler.inc.php";
 
 if(isset($_POST['email'])){
     $fName = $_POST['fName'];
@@ -23,7 +25,7 @@ if(isset($_POST['email'])){
 <body>
 <div class="container">
     <form method="post" action="#">
-        <div id="div_login">
+        <div id="div_signup">
             <h1>Sign Up</h1>
             <div>
                 <input type="text" class="textbox" name="fName" placeholder="First Name" require/>

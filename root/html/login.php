@@ -1,7 +1,15 @@
 <?php
-// Include files
+//Login page
+//Include files
 require_once "includes/connectToDB.inc.php";
 require_once "includes/functions.inc.php";
+require_once "includes/errorHandler.inc.php";
+
+session_start();
+if(isset($_SESSION['uID'])){
+    header("location: ../html/index.php?error=logged");
+    exit();
+}
 
 if(isset($_POST['email'])){
     $email =$_POST['email'];
