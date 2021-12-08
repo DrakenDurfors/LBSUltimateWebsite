@@ -16,7 +16,6 @@ if(isset($_SESSION['uID'])){
     </head>
     <body>
         <a href="profile.php">Profil</a>
-        <a href="../html/includes/logout.inc.php">quick destroy</a> <!-- Remove later -->
     </body>
     </html>
 <?php
