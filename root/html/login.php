@@ -1,21 +1,13 @@
 <?php
-// Include connect file
-require_once "includes/connectToDB.php";
+// Include files
+require_once "includes/connectToDB.inc.php";
+require_once "includes/functions.inc.php";
 
-if(isset($_POST['txt_uname'])){
-    $uname =$_POST['txt_uname'];
-    $passw =$_POST['txt_pwd'];
+if(isset($_POST['email'])){
+    $email =$_POST['email'];
+    $pwd = hash("sha256",$_POST['pwd']);
 
-    $sql="SELECT * from login where name='".$uname."'AND password='".$passw."' limit 1";
-
-    $result= $conn->query($sql);
-
-    if(mysqli_num_rows($result)==1){
-        echo "logged in";
-    }
-    else {
-        echo "you failed to log in";
-    }
+    loginUser($conn, $email, $pwd);
 }
 ?>
 <!DOCTYPE html>
@@ -24,7 +16,7 @@ if(isset($_POST['txt_uname'])){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Login</title>
 </head>
 <body>
 <div class="container">
@@ -32,16 +24,19 @@ if(isset($_POST['txt_uname'])){
         <div id="div_login">
             <h1>Login</h1>
             <div>
-                <input type="text" class="textbox" name="txt_uname" placeholder="Username" />
+                <input type="text" class="textbox" name="email" placeholder="Email" require/>
             </div>
             <div>
-                <input type="password" class="textbox" name="txt_pwd" placeholder="Password"/>
+                <input type="password" class="textbox" name="pwd" placeholder="Password" require/>
             </div>
             <div>
-                <input type="submit" value="Submit" name="but_submit" id="but_submit" />
+                <input type="submit" value="Submit" name="but_submit" id="but_submit" require/>
             </div>
         </div>
     </form>
+    <div>
+        <a href="signup.php">Sign up?</a>
+    </div>
 </div>
 </body>
 </html>
