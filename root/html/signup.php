@@ -9,7 +9,7 @@ if(isset($_POST['email'])){
     $fName = $_POST['fName'];
     $lName = $_POST['lName'];
     $email = $_POST['email'];
-    $pwd = hash("sha256",$_POST['pwd']);
+    $pwd = $_POST['pwd'];
 
     insertUser($conn, $fName, $lName, $email, $pwd);
 }

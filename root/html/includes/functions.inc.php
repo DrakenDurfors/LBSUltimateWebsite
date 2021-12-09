@@ -1,7 +1,7 @@
 <?php
 //functions page
 
-//Check if user exists in DB -------------------------------------------------------------------------------------------------------------
+//Check if user exists in DB -----------------------------------------------------------------------------------
 function userExist($conn, $email, $uID){
     $sql = "SELECT * FROM users WHERE email = ? OR uID=?";
     $stmt = mysqli_stmt_init($conn);
@@ -22,7 +22,7 @@ function userExist($conn, $email, $uID){
     }
 }
 
-//login user -------------------------------------------------------------------------------------------------------------
+//login user ----------------------------------------------------------------------------------------------------
 function loginUser($conn, $email, $pwd){
     $userExists = userExist($conn, $email, $email);
     
@@ -31,7 +31,9 @@ function loginUser($conn, $email, $pwd){
         exit();
     }
 
-    if($pwd == $userExists["pwd"]){
+    $hPwd = hash("sha256",$pwd);
+
+    if($hPwd == $userExists["pwd"]){
         session_start();
         $_SESSION["uID"] = $userExists["uID"];
         $_SESSION["firstName"] = $userExists["firstName"];
@@ -46,7 +48,7 @@ function loginUser($conn, $email, $pwd){
     }
 }
 
-//Insert user into DB -------------------------------------------------------------------------------------------------------------
+//Insert user into DB ---------------------------------------------------------------------------------------------
 function insertUser($conn, $fname, $lname, $email, $pwd){
     if(empty($fname and $lname and $email and $pwd)){
         header("location: ../html/signup.php?error=fieldError");
@@ -63,23 +65,27 @@ function insertUser($conn, $fname, $lname, $email, $pwd){
         header("location: ../html/signup.php?error=userExist");
         exit();
     }
+
+    $hPwd = hash("sha256",$pwd);
     $sql = "INSERT INTO users (firstName, lastName, email, pwd) VALUES (?,?,?,?)";
     $stmt = mysqli_stmt_init($conn);
     validateStmt($stmt, $sql);
 
-    mysqli_stmt_bind_param($stmt, "ssss", $fname, $lname, $email, $pwd);
+    mysqli_stmt_bind_param($stmt, "ssss", $fname, $lname, $email, $hPwd);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
     header("location: ../html/login.php");
     exit();
 }
 
-//Change name -------------------------------------------------------------------------------------------------------------
+//Change name ------------------------------------------------------------------------------------------------------
 function changeName($conn, $nFName, $nLName, $uID){
     if(empty($nFName and $nLName)){
         header("location: ../html/profile.php?error=fieldError");
         exit();
     }
+
+    validateUser(userExist($conn, $uID, $uID));
 
     $sql = "UPDATE users SET firstName=?, lastName=? WHERE uID = $uID";
     $stmt = mysqli_stmt_init($conn);
@@ -91,7 +97,7 @@ function changeName($conn, $nFName, $nLName, $uID){
     exit();
 }
 
-//Change email -------------------------------------------------------------------------------------------------------------
+//Change email ------------------------------------------------------------------------------------------------------
 function changeEmail($conn, $nEmail, $uID){
     if(empty($nEmail)){
         header("location: ../html/profile.php?error=fieldError");
@@ -107,6 +113,7 @@ function changeEmail($conn, $nEmail, $uID){
     $checkNew = userExist($conn, $nEmail, $nEmail);
     if ($userExists == false){
         logout();
+        exit();
     }
     else if($checkNew != false){
         header("location: ../html/profile.php?error=userExist");
@@ -123,7 +130,7 @@ function changeEmail($conn, $nEmail, $uID){
     exit();
 }
 
-//Change password -------------------------------------------------------------------------------------------------------------
+//Change password -----------------------------------------------------------------------------------------------------
 function changePwd($conn, $pwd, $nPwd, $cNPwd, $uID){
     if(empty($pwd and $nPwd and $cNPwd)){
         header("location: ../html/profile.php?error=fieldError");
@@ -134,8 +141,10 @@ function changePwd($conn, $pwd, $nPwd, $cNPwd, $uID){
     $hNPwd = hash("sha256",$nPwd);
     $hCNPwd = hash("sha256",$cNPwd);
 
-    $email = $_SESSION['email'];
     $userExists = userExist($conn, $uID, $uID);
+
+    validateUser($userExists);
+
     $oldPwd = $userExists['pwd'];
 
     if($hPwd != $oldPwd){
@@ -161,6 +170,39 @@ function changePwd($conn, $pwd, $nPwd, $cNPwd, $uID){
     exit();
 }
 
+//delete user from db -------------------------------------------------------------------------------------------------
+function deleteUser($conn, $uID, $pwd, $cPwd){
+    if(empty($pwd and $cPwd)){
+        header("location: ../html/profile.php?error=fieldError");
+        exit();
+    }
+
+    $hPwd = hash("sha256",$pwd);
+    $hCPwd = hash("sha256",$cPwd);
+
+    $userExists = userExist($conn, $uID, $uID);
+    validateUser($userExists);
+
+    $dbPwd = $userExists['pwd'];
+
+    if($hPwd != $hCPwd){
+        header("location: ../html/profile.php?error=confirmErr");
+        exit();
+    }
+    else if($hPwd != $dbPwd){
+        header("location: ../html/profile.php?error=unmatchingPwd");
+        exit();
+    }
+
+    $sql = "DELETE FROM users WHERE uID=$uID";
+    $stmt = mysqli_stmt_init($conn);
+    validateStmt($stmt, $sql);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
+    logout();
+    exit();
+}
+
 //logout -------------------------------------------------------------------------------------------------------------
 function logout(){
     session_start();
@@ -169,7 +211,7 @@ function logout(){
     exit();
 }
 
-//Check if statement is valid -------------------------------------------------------------------------------------------------------------
+//Check if statement is valid -----------------------------------------------------------------------------------------
 function validateStmt($stmt, $sql){
     if(!mysqli_stmt_prepare($stmt, $sql)){
         header("location: ../html/login.php?error=stmtFailed");
@@ -177,4 +219,11 @@ function validateStmt($stmt, $sql){
     }
 }
 
+//Validates users existence in database --------------------------------------------------------------------------------
+function validateUser($userExists){
+    if ($userExists == false){
+        logout();
+        exit();
+    }
+}
 ?>

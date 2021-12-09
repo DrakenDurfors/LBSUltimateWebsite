@@ -27,7 +27,7 @@
                 echo "Your password is incorrect, try again";
                 break;
             case "confirmErr":
-                echo "Your new password doesnt match the confirmation password";
+                echo "Your password doesnt match the confirmation password";
                 break;
             case "samePwd":
                 echo "Your new password is the same as your old password";

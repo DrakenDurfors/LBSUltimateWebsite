@@ -12,8 +12,8 @@ if(isset($_SESSION['uID'])){
 }
 
 if(isset($_POST['email'])){
-    $email =$_POST['email'];
-    $pwd = hash("sha256",$_POST['pwd']);
+    $email = $_POST['email'];
+    $pwd = $_POST['pwd'];
 
     loginUser($conn, $email, $pwd);
 }

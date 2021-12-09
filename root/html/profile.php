@@ -31,7 +31,10 @@ else if(isset($_POST['chPwd'])){
     changePwd($conn, $pwd, $nPwd, $cNPwd, $uID);
 }
 else if(isset($_POST['delete'])){
-    echo "Are you sure you want to delete?"; //change into a propper thing later
+    $dPwd = $_POST['dPwd'];
+    $dCPwd = $_POST['cDPwd'];
+
+    deleteUser($conn, $uID, $dPwd, $dCPwd);
 }
 else if(isset($_POST['logout'])){
     logout();
@@ -80,6 +83,12 @@ else if(isset($_POST['logout'])){
             <div>
                 <input type="submit" value="Delete Account" name="delete" id="but_submit" require/>
             </div>
+                <div>
+                    <input type="password" class="textbox" name="dPwd" placeholder="Password" require/>
+                </div>
+                <div>
+                    <input type="password" class="textbox" name="cDPwd" placeholder="Confirm Password" require/>
+                </div>
             <div>
                 <input type="submit" value="Logout" name="logout" id="but_submit" require/>
             </div>
