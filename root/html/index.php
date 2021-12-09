@@ -5,6 +5,9 @@ require_once "includes/errorHandler.inc.php";
 
 session_start();
 if(isset($_SESSION['uID'])){
+    if(isset($_SESSION['admin'])){
+        echo "<a href='admin.php'>Admin</a><br>";
+    }
 ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -30,7 +33,7 @@ if(isset($_SESSION['uID'])){
         <title>LBS Kreativa högskolan</title>
     </head>
     <body>
-        <a href="login.php">Login</a>
+        <a href='login.php'>Login</a>
     </body>
     </html>
 <?php

@@ -35,6 +35,9 @@ function loginUser($conn, $email, $pwd){
 
     if($hPwd == $userExists["pwd"]){
         session_start();
+        if($userExists['admin'] == 1){
+            $_SESSION["admin"] = $userExists["admin"];
+        }
         $_SESSION["uID"] = $userExists["uID"];
         $_SESSION["firstName"] = $userExists["firstName"];
         $_SESSION["lastName"] = $userExists["lastName"];
@@ -199,15 +202,18 @@ function deleteUser($conn, $uID, $pwd, $cPwd){
     validateStmt($stmt, $sql);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
-    logout();
+    session_unset();
+    session_destroy();
+    header("location: ../html/index.php?success=deleteUser");
     exit();
 }
 
 //logout -------------------------------------------------------------------------------------------------------------
 function logout(){
     session_start();
+    session_unset();
     session_destroy();
-    header("location: ../html/index.php");
+    header("location: ../html/index.php?success=logout");
     exit();
 }
 

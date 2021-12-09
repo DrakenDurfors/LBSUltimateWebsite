@@ -3,7 +3,7 @@
 //Include files
 require_once "includes/connectToDB.inc.php";
 require_once "includes/errorHandler.inc.php";
-require_once "includes/functions.inc.php";
+require_once "includes/profileFunctions.inc.php";
 
 session_start();
 if(!isset($_SESSION['uID'])){
