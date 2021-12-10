@@ -11,12 +11,6 @@ if(!isset($_SESSION['uID'])){
     header("location: ../html/index.php?error=notLogged");
     exit();
 }
-
-if(isset($_GET['s']) && $_GET['s'] != ''){
-    $query = strval(trim($_GET['s']));
-
-    searchUsers($conn, $query);
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -35,6 +29,13 @@ if(isset($_GET['s']) && $_GET['s'] != ''){
                         <td><input type="text" name="s" placeholder="Search for a user"></td>
                         <td><input type="submit" name="" value="Search"></td>
                     </tr>
+                    <?php 
+                    if(isset($_GET['s']) && $_GET['s'] != ''){
+                        $query = trim($_GET['s']);
+                    
+                        $users = searchUsers($conn, $query);
+                    }
+                    ?>
                 </table>
             </form>
         </div>

@@ -220,7 +220,7 @@ function logout(){
 //Check if statement is valid -----------------------------------------------------------------------------------------
 function validateStmt($stmt, $sql){
     if(!mysqli_stmt_prepare($stmt, $sql)){
-        header("location: ../html/login.php?error=stmtFailed");
+        header("location: ../html/index.php?error=stmtFailed");
         exit();
     }
 }
