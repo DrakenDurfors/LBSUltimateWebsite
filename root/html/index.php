@@ -7,6 +7,5 @@
     <title>LBS Kreativa högskolan</title>
 </head>
 <body>
-    
 </body>
 </html>

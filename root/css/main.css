@@ -1,0 +1,4 @@
+.eventContainer{
+    display:flex;
+    justify-content: space-evenly;
+}
