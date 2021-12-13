@@ -13,17 +13,19 @@ function searchUsers($conn, $query){
     }
     $sql = substr($sql, 0, strlen($sql) - 3);
 
+    //Gets results
     $result = mysqli_query($conn, $sql);
 
+    //Prints results
     if(mysqli_num_rows($result) > 0){
         echo '<tr><td>Users found</tr></td>';
         while($rows = mysqli_fetch_assoc($result)){
-            echo '<tr>
+            echo '<form method="GET" action=""><tr>
                 <td><hr>'.$rows['firstName'].'</td>
                 <td><hr>'.$rows['lastName'].'</td>
                 <td><hr>'.$rows['email'].'</td>
-                <td><hr><input type="submit" value="Select"></td>
-                </tr>';
+                <td><hr><input type="hidden" name="Id" value="'.$rows['uID'].'"><input type="submit" value="Select"></td>
+                </tr></form>';
         }
     }
     else{
