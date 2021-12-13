@@ -22,18 +22,18 @@ if(!isset($_SESSION['uID'])){
 </head>
 <body>
     <h1>Hantera profiler</h1>
-        <div class="wrapper">
+        <div>
             <form method="GET" action="">
                 <table>
                     <tr>
-                        <td><input type="text" name="s" placeholder="Search for a user"></td>
+                        <td><input type="text" name="sr" placeholder="Search for a user"></td>
                         <td><input type="submit" name="" value="Search"></td>
                     </tr>
                     <?php 
-                    if(isset($_GET['s']) && $_GET['s'] != ''){
-                        $query = trim($_GET['s']);
+                    if(isset($_GET['sr']) && $_GET['sr'] != ''){
+                        $query = trim($_GET['sr']);
                     
-                        $users = searchUsers($conn, $query);
+                        searchUsers($conn, $query);
                     }
                     ?>
                 </table>

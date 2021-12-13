@@ -1,40 +1,37 @@
 <?php
 function searchUsers($conn, $query){
     //Initiantes SQL statement
+    $query = htmlspecialchars($query);
+
     $sql = "SELECT * FROM users WHERE ";
 
     //Updates SQL statement
     $keywords = explode(' ', $query);
     foreach($keywords as $word){
         $word = strval($word);
-        $sql .= "email LIKE '%".$word."%' OR";
+        $sql .= "email LIKE '%".$word."%' OR firstName LIKE '%".$word."%' OR lastName LIKE '%".$word."%' OR ";
     }
     $sql = substr($sql, 0, strlen($sql) - 3);
 
-    echo $sql;
+    $result = mysqli_query($conn, $sql);
 
-    //Execute SQL code
-    $stmt = mysqli_stmt_init($conn);
-    validateStmt($stmt, $sql);
-    mysqli_stmt_execute($stmt);
-
-    $result = mysqli_stmt_get_result($stmt);
-
-    //Prints results
-    if($rows = mysqli_fetch_assoc($result)){
+    if(mysqli_num_rows($result) > 0){
         echo '<tr><td>Users found</tr></td>';
         while($rows = mysqli_fetch_assoc($result)){
             echo '<tr>
-                <td>'.$rows['firstName'].'</td>
-                <td>'.$rows['lastName'].'</td>
-                <td>'.$rows['email'].'</td>
-            </tr>';
+                <td><hr>'.$rows['firstName'].'</td>
+                <td><hr>'.$rows['lastName'].'</td>
+                <td><hr>'.$rows['email'].'</td>
+                <td><hr><input type="submit" value="Select"></td>
+                </tr>';
         }
-        mysqli_stmt_close($stmt);
     }
     else{
         echo "<tr><td>Users not found</tr></td>";
-        mysqli_stmt_close($stmt);
     }
+}
+
+function selectUser(){
+    echo "Congrats";
 }
 ?>
