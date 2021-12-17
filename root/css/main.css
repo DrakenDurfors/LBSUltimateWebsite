@@ -1,4 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;800&display=swap');
+
+:root{
+    --GUL:#ffeb3b;
+    --GRÖN:#00e676;
+    --CYAN:#00ffff;
+    --ORANGE:#FF8507;
+    --TURKOS:#009688;
+    --GRÅ:#222222;
+    --ROSA:#f50057;
+    --VIOLETT:#673ab7;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Nunito Sans', sans-serif;
+}
+html{
+    -webkit-text-size-adjust: 100%;
+}
+
+body{
+    box-sizing: border-box;
+}
+
 .eventContainer{
     display:flex;
     justify-content: space-evenly;
+}
+
+.videoPanel{
+    width: 100%;
+    height: auto;
+    position: relative;
+    overflow: hidden;
+}
+
+.videoLogged{
+    width: 100%;
+    height: 75%;
+    position: relative;
+    overflow: hidden;
+}
+
+.frontBold{
+    position: absolute;
+    display: block;
+    text-align: center;
+    font-weight: bold;
+    color: white;
+    text-shadow: black 0px 0px 6px;
+    font-size: 96px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 5;
+}
+
+.loggo{
+    position: fixed;
+    width: 20vw;
+    top: 4vh;
+    left: -1vh;
+    z-index: 1;
+}
+
+.rightTopBtn{
+    position: fixed;
+    top: 4vh;
+    right: -1px;
+}
+.rightBotBtn{
+    position: fixed;
+    top: 4vh;
+    right: -1px;
+}
+
+.btn{
+    background-color: var(--GRÅ);
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-size: 18px;
+    margin: 4px 2px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.GUL{
+    background-color: var(--GUL);
+}
+.GRÖN{
+    background-color: var(--GRÖN);
+}
+.CYAN{
+    background-color: var(--CYAN);
+}
+.ORANGE{
+    background-color: var(--ORANGE);
+}
+.TURKOS{
+    background-color: var(--TURKOS);
+}
+.GRÅ{
+    background-color: var(--GRÅ);
+}
+.ROSA{
+    background-color: var(--ROSA);
+}
+.VIOLETT{
+    background-color: var(--VIOLETT);
 }
