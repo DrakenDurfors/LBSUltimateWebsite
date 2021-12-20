@@ -32,13 +32,13 @@ if(isset($_POST['email'])){
         <div id="div_login">
             <h1>Login</h1>
             <div>
-                <input type="text" class="textbox" name="email" placeholder="Email" require/>
+                <input type="text" class="textbox" name="email" placeholder="Email" required/>
             </div>
             <div>
-                <input type="password" class="textbox" name="pwd" placeholder="Password" require/>
+                <input type="password" class="textbox" name="pwd" placeholder="Password" required/>
             </div>
             <div>
-                <input type="submit" value="Submit" name="but_submit" id="but_submit" require/>
+                <input type="submit" value="Submit" name="but_submit" id="but_submit" required/>
             </div>
         </div>
     </form>

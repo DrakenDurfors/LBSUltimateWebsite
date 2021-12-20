@@ -2,7 +2,7 @@
 // if(!isset($_SESSION["userId"])){
 //     header("Location:./?error=notLogged");
 // }
-require_once "includes/connectToDB.php";
+require_once "includes/connectToDB.inc.php";
 // Temporary session variable for testing purpouses:
 $_SESSION['uID'] = 1;
 ?>
