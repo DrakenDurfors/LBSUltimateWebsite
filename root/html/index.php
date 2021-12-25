@@ -14,6 +14,7 @@
     <?php
     //Include files
     require_once "includes/errorHandler.inc.php";
+    require_once "includes/connectToDB.inc.php";
 
     session_start();
     if(isset($_SESSION['uID'])){
@@ -59,22 +60,28 @@
             </div>
         <?php
     }?>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
+    <div class="cardHolder">
+        <?php 
+        require_once "includes/clubCards.inc.php";
+        cardClub(1, $conn);
+        cardClub(2, $conn);
+        cardClub(3, $conn);
+        ?>
+    </div>
+    <div class="right">
+        <a class="btn ROSA" href="">MER KLUBBAR ></a>
+    </div>
 
-    <?php require_once "includes/footer.inc.php";?>
+    <?php 
+        require_once "includes/eventCard.inc.php";
+        cardEvent(1, $conn);
+        cardEvent(2, $conn);
+        cardEvent(3, $conn);
+    ?>
+
+    <?php
+    require_once "includes/footer.inc.php";
+    
+    ?>
 </body>
 </html>

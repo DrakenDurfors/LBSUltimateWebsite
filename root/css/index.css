@@ -51,31 +51,98 @@ header{
     right: -2px;
 }
 
-/* -------------------------- Club Examples ------------------------- */
+/* -------------------------- Club Cards ------------------------- */
+.cardHolder{
+    display: flex;
+    justify-content: center;
+}
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 20%;
+    margin: 20vh 5vw;
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.container {
+    padding: 2px 16px;
+}
+
+.card img{
+    width:  100%;
+    height: 25vh;
+    object-fit: cover;
+}
+
+/* -------------------------- Event Card ------------------------- */
+
 
 
 /* ----------------------------- Footer ---------------------------- */
 footer{
     background-color: var(--ROSA);
-    margin-top: 5wh;
-    padding: 100px 30px 50px;
+    margin-top: 5vh;
     bottom: 0;
     position: relative;
     overflow: hidden;
+    padding: 100px 200px 50px;
 }
 
-.topFooter{
-    padding: 0px 100px 40px;
-    display: inline-block;
+.topFooter, .botFooter{
+    padding-bottom: 100px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
 }
 
 .botFooter{
+    margin-top: 100px;
+}
 
+.footerList{
+    float: right;
+    margin-left: 5vw;
+}
+
+.linkBox, .linkBox:hover{
+    height: 50px;
+    width: 50px;
+    border-radius: 100%;
+    background-color: var(--GRÅ);
+    border: solid white 2px;
+    display: block;
+    margin: 20px;
+    text-align: center;
+}
+
+.linkBox:hover{
+    background-color: var(--VIOLETT);
+}
+
+/* Dont change this, this is indeed correct */
+span img{
+    top: 50%;
+    transform: translateY(50%);
 }
 
 dl, dt{
+    padding: 5px 30px 5px;
+    vertical-align: top;
+}
 
-    border: solid black 1px;
+dl{
+    display: inline-block;
+}
+
+a{
+    text-align: center;
+    text-decoration: none;
+    color: white;
 }
 
 hr{

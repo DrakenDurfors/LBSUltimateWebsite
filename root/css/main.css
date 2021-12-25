@@ -46,6 +46,16 @@ body{
     font-weight: bold;
 }
 
+.right{
+    width: 10vw;
+    float: right;
+}
+
+.left{
+    width: 10vw;
+    float: left;
+}
+
 .GUL{
     background-color: var(--GUL);
 }
