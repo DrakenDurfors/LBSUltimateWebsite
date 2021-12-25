@@ -33,6 +33,7 @@
             <!-- Buttons at top right -->
             <div class="rightTopBtn">
                 <a class="btn" href="profile.php">PROFIL</a>
+                <a class="btn" href="clubs.php">KLUBBAR</a>
                 <?php
                 // Checks if user is an admin and adds an admin page
                 if(isset($_SESSION['admin'])){
