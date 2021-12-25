@@ -19,6 +19,9 @@ if(isset($_SESSION['uID'])){
     </head>
     <body>
         <a href="profile.php">Profil</a>
+        <a href='createClub.php'>Club</a>
+        <a href='eventstuffs.php'>Event</a>
+        <a href='clubs.php'>clubs</a>
     </body>
     </html>
 <?php
@@ -34,6 +37,7 @@ if(isset($_SESSION['uID'])){
     </head>
     <body>
         <a href='login.php'>Login</a>
+
     </body>
     </html>
 <?php

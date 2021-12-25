@@ -1,6 +1,9 @@
 <?php
-
-
+session_start();
+if(!isset($_SESSION['uID'])){
+    header("location: ../?error=notLogged");
+    exit();
+}
 ?>
 
 
@@ -13,10 +16,11 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="includes/clubFunctions.php" method="post">
-    <input type="text" name="name" id="">
-    <input type="text" name="description" id="">
-    <input type="hidden" name="clubPass" value="true">
+    <form action="includes/clubFunctions.inc.php" method="post" enctype="multipart/form-data">
+    <input type="text" name="name">
+    <input type="text" name="description">
+    <input type="file" name="image" id="image" required>
+    <input type="hidden" name="pass" value="create">
     <input type="submit" value="Create" name="newClubSubmit">
     </form>
 </body>

@@ -4,7 +4,8 @@
 require_once "includes/connectToDB.inc.php";
 require_once "includes/errorHandler.inc.php";
 require_once "includes/profileFunctions.inc.php";
-require_once "includes/searchDB.inc.php";
+// require_once "includes/searchDB.inc.php";
+require_once "includes/adminFunctions.inc.php";
 
 session_start();
 if(!isset($_SESSION['uID'])){
