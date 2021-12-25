@@ -1,6 +1,5 @@
 <?php
-//todo: add check for arrival
-include_once 'connectToDB.php';
+include_once 'connectToDB.inc.php';
 if (isset($_POST['pass'])) {
     switch ($_POST['pass']) {
         case "create";
@@ -22,6 +21,9 @@ if (isset($_POST['pass'])) {
             confirm($conn);
             break;
     }
+} else {
+    header("Location:../");
+    exit();
 }
 
 
