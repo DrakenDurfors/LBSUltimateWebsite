@@ -1,0 +1,86 @@
+@import url(main.css);
+
+/* -------------------------- Index header ------------------------- */
+header{
+    width: 100%;
+    max-width: 100vw;
+    height: auto;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 5vh;
+}
+
+.videoPanelLogged{
+    height: 60vh;
+}
+
+.overlay{
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.5);
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+}
+
+.frontBold{
+    position: absolute;
+    display: block;
+    text-align: center;
+    font-weight: bold;
+    color: white;
+    text-shadow: black 0px 0px 6px;
+    font-size: 5vw;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 2;
+}
+
+.loggo, .rightTopBtn{
+    position: fixed;
+    width: 20vw;
+    top: 4vh;
+    z-index: 2;
+}
+
+.loggo{
+    left: -1px;
+}
+
+.rightTopBtn{
+    right: -2px;
+}
+
+/* -------------------------- Club Examples ------------------------- */
+
+
+/* ----------------------------- Footer ---------------------------- */
+footer{
+    background-color: var(--ROSA);
+    margin-top: 5wh;
+    padding: 100px 30px 50px;
+    bottom: 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.topFooter{
+    padding: 0px 100px 40px;
+    display: inline-block;
+}
+
+.botFooter{
+
+}
+
+dl, dt{
+
+    border: solid black 1px;
+}
+
+hr{
+    background-color: white;
+    height: 5px;
+    border: none;
+}
+
