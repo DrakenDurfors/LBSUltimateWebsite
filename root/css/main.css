@@ -46,14 +46,22 @@ body{
     font-weight: bold;
 }
 
-.right{
+.right, .left{
     width: 10vw;
-    float: right;
+    flex-direction: row;
+}
+
+.right{
+    margin-left: auto;
+}
+
+a{
+    text-decoration: none;
+    color: black;
 }
 
 .left{
-    width: 10vw;
-    float: left;
+    margin-right: auto;
 }
 
 .GUL{
@@ -79,4 +87,35 @@ body{
 }
 .VIOLETT{
     background-color: var(--VIOLETT);
+}
+.VIT{
+    background-color: white;
+}
+
+.GUL_TXT{
+    color: var(--GUL);
+}
+.GRÖN_TXT{
+    color: var(--GRÖN);
+}
+.CYAN_TXT{
+    color: var(--CYAN);
+}
+.ORANGE_TXT{
+    color: var(--ORANGE);
+}
+.TURKOS_TXT{
+    color: var(--TURKOS);
+}
+.GRÅ_TXT{
+    color: var(--GRÅ);
+}
+.ROSA_TXT{
+    color: var(--ROSA);
+}
+.VIOLETT_TXT{
+    color: var(--VIOLETT);
+}
+.VIT_TXT{
+    color: white;
 }

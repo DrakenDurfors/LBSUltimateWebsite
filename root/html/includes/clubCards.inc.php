@@ -1,6 +1,5 @@
 <?php 
 function cardClub($cID, $conn){
-
     $sql = "SELECT * FROM clubs WHERE cID = ?";
     $stmt = mysqli_stmt_init($conn);
     if(!mysqli_stmt_prepare($stmt, $sql)){
@@ -16,14 +15,22 @@ function cardClub($cID, $conn){
     if($row = mysqli_fetch_assoc($result)){
         $cName = $row['clubName'];
         $cDesc = $row['clubDescription'];
+
+        if(strlen($cDesc)>200){
+            $cDesc = substr($cDesc,0,200) . '...';
+        }
         
         echo'
         <div class="card">
-            <img src="../images/DSC_6017LBS Stockholm Södra helt oredigerat mindre upplösning_.jpg" alt="Avatar">
-            <div class="container">
-                <h4><b>'.$cName.'</b></h4> 
-                <p>'.$cDesc.'</p> 
-            </div>
+            <a href="#">
+                <img src="../images/DSC_6017LBS Stockholm Södra helt oredigerat mindre upplösning_.jpg" alt="Avatar">
+                <div class="container">
+                    <h2 class="VIOLETT_TXT"><b>'.$cName.' ></b></h2> 
+                    <p>'.$cDesc.'</p>
+                    <br>
+                    <hr>
+                </div>
+            </a>
         </div>'; 
         mysqli_stmt_close($stmt);
     }
