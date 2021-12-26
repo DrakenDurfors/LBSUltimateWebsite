@@ -14,6 +14,7 @@
     <?php
     //Include files
     require_once "includes/errorHandler.inc.php";
+    require_once "includes/connectToDB.inc.php";
 
     session_start();
     if(isset($_SESSION['uID'])){
@@ -60,22 +61,34 @@
             </div>
         <?php
     }?>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
+    <div class="cardHolder">
+        <?php 
+        require_once "includes/clubCards.inc.php";
+        cardClub(1, $conn);
+        cardClub(2, $conn);
+        cardClub(3, $conn);
+        ?>
+        <a class="btn ROSA right" href="">MER KLUBBAR ></a>
+    </div>
 
-    <?php require_once "includes/footer.inc.php";?>
+    <div class="cardHolder">
+        <div class="largeCard VIOLETT">
+            <div class="container">
+                <h1 class="VIT_TXT">KOMMANDE EVENT</h1>
+                <?php 
+                require_once "includes/eventCard.inc.php";
+                cardEvent(1, $conn);
+                cardEvent(2, $conn);
+                cardEvent(3, $conn);
+                ?>
+                <a class="btn ROSA left" href="">MER EVENT ></a>
+            </div>
+            <img src="../images/DSC_6017LBS Stockholm Södra helt oredigerat mindre upplösning_.jpg" alt="Avatar">
+        </div>
+    </div>
+
+    <?php
+    require_once "includes/footer.inc.php";
+    ?>
 </body>
 </html>
