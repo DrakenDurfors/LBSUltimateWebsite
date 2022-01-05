@@ -64,9 +64,9 @@
     <div class="cardHolder">
         <?php 
         require_once "includes/clubCards.inc.php";
-        cardClub(1, $conn);
-        cardClub(2, $conn);
-        cardClub(3, $conn);
+        cardClub(11, $conn);
+        cardClub(12, $conn);
+        cardClub(13, $conn);
         ?>
         <a class="btn ROSA right" href="">MER KLUBBAR ></a>
     </div>
@@ -77,9 +77,9 @@
                 <h1 class="VIT_TXT">KOMMANDE EVENT</h1>
                 <?php 
                 require_once "includes/eventCard.inc.php";
-                cardEvent(1, $conn);
-                cardEvent(2, $conn);
-                cardEvent(3, $conn);
+                cardEvent(8, $conn);
+                cardEvent(9, $conn);
+                cardEvent(10, $conn);
                 ?>
                 <a class="btn ROSA left" href="">MER EVENT ></a>
             </div>
