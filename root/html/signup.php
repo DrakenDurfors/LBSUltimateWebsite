@@ -30,30 +30,21 @@ if(isset($_POST['email'])){
     </a>
     </div>
     <div class="container GRÅ GUL_TXT">
+        <h1>SKAFFA KONTO</h1>
+        <hr>
         <div class="inBox">
             <form method="post" action="#">
                 <div id="div_signup">
-                    <h1>Sign Up</h1>
-                    <div>
-                        <input type="text" class="textbox" name="fName" placeholder="First Name" required/>
-                    </div>
-                    <div>
-                        <input type="text" class="textbox" name="lName" placeholder="Last Name" required/>
-                    </div>
-                    <div>
-                        <input type="text" class="textbox" name="email" placeholder="Email" required/>
-                    </div>
-                    <div>
-                        <input type="password" class="textbox" name="pwd" placeholder="Password" required/>
-                    </div>
-                    <div>
-                        <input class="btn VIOLETT" type="submit" value="Submit" name="but_submit" id="but_submit" required/>
-                    </div>
+                    <input type="text" class="textbox" name="fName" placeholder=" FÖRNAMN" required/>
+                    <input type="text" class="textbox" name="lName" placeholder=" EFTERNAMN" required/>
+                    <input type="text" class="textbox" name="email" placeholder=" EMAIL" required/>
+                    <input type="password" class="textbox" name="pwd" placeholder=" LÖSENORD" required/>
+                    <input class="btn VIOLETT left" type="submit" value="Submit" name="but_submit" id="but_submit" required/>
                 </div>
             </form>
-        </div>
-        <div>
-            <a class="btn ROSA right" href="login.php">Already have an account?</a>
+            <div>
+                <a class="btn ROSA right" href="login.php">HAR KONTO ></a>
+            </div>
         </div>
     </div>
 </body>
