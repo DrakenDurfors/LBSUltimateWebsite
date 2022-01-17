@@ -10,7 +10,9 @@
 </head>
 <body>
     <!-- Loggo in top left -->
-    <img class="loggo" src="../images/LBS_logo_CMYK_SVART.png" alt="">
+    <a href="../html/">
+        <img class="loggo" src="../images/LBS_logo_CMYK_SVART.png" alt="">
+    </a>
     <?php
     //Include files
     require_once "includes/errorHandler.inc.php";
@@ -68,6 +70,8 @@
         cardClub(12, $conn);
         cardClub(13, $conn);
         ?>
+    </div>
+    <div class="cardholder">
         <a class="btn ROSA right" href="">MER KLUBBAR ></a>
     </div>
 

@@ -1,0 +1,13 @@
+@import url(main.css);
+
+/* -------------------------- Login/Signup ------------------------- */
+
+.container{
+    justify-content: center;
+}
+
+.inBox{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}

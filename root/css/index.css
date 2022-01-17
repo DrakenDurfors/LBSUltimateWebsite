@@ -36,15 +36,11 @@ header{
     z-index: 2;
 }
 
-.loggo, .rightTopBtn{
+.rightTopBtn{
     position: fixed;
     width: 20vw;
     top: 4vh;
     z-index: 2;
-}
-
-.loggo{
-    left: -1px;
 }
 
 .rightTopBtn{

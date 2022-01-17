@@ -21,6 +21,23 @@ function cardEvent($eID, $conn){
             $eDesc = substr($eDesc,0,50) . '...';
         }
 
+        $sql = "SELECT * FROM eventsignup WHERE eID = ?";
+        $stmt = mysqli_stmt_init($conn);
+        if(!mysqli_stmt_prepare($stmt, $sql)){
+            header("location: ../html/index.php?error=stmtFailed");
+            exit();
+        }
+        mysqli_stmt_bind_param($stmt, "s", $eID);
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
+
+        $count = 0;
+
+        while($row = mysqli_fetch_assoc($result)){
+            $count++;
+        }
+
+
         echo'
         <div class="event VIT">
             <a href="#">
@@ -30,7 +47,7 @@ function cardEvent($eID, $conn){
                     <p>'.$eDesc.'</p> 
                 </div>
                 <div class="container">
-                    <p>67 Registrerade</p>
+                    <p>'.$count.' Registrerade</p>
                     <p class="ROSA_TXT"><b> SE EVENT ></b></p>
                 </div>
             </a>
